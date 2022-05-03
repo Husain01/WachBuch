@@ -1,0 +1,47 @@
+@import url(../../App.css);
+
+
+h3{
+    font-size: 2rem;
+    line-height: 2rem;
+    color: var(--text-color);
+}
+
+h4, p{
+    font-size: 1.5rem;
+    line-height: normal;
+}
+
+.card{
+    padding: 0;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0;
+}
+
+.card-img{
+    width: 100%;
+    border-radius: inherit;
+}
+
+.card-footer{
+    height: fit-content;
+    padding: .5rem 1rem;
+}
+
+.card-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fa-ellipsis-v{
+    margin-top: .4rem;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.card-description{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,43 @@
+@import url(../../App.css);
+
+.aside{
+    flex: 0 0 15rem;
+    margin-right: 1rem;
+    margin-top: 0;
+}
+
+.aside ul{
+    padding-left:  .5rem;
+}
+
+.aside ul li{
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    margin: .5rem 0;
+    width: 100%;
+    color: var(--text-color);
+}
+
+.aside ul li:first-child{
+    margin-top: 0;
+}
+
+
+
+.aside ul li:hover{
+    cursor: pointer;
+}
+
+
+
+.aside ul li:active, .active{
+    box-shadow: var(--normal-inset-shadow);
+    border-radius: 5px;
+}
+
+.aside-icon{
+    font-size: 2rem;
+    margin:0 .5rem;
+}
+

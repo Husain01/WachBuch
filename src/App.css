@@ -1,0 +1,23 @@
+@import url("https://neu-ui-cl.netlify.app/css/components.css");
+
+:root{
+  --primary-color:#E84D5B;
+  --text-color: white;
+  --bg-color:#3b3b3b;
+  --normal-inset-shadow:inset 5px 5px 10px #323232,
+  inset -5px -5px 10px #444444;
+  --normal-shadow:  5px 5px 10px #323232,
+  -5px -5px 10px #444444;
+  --primary-inset-shadow: inset 5px 5px 10px #c5414d,
+  inset -5px -5px 10px #ff5969;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+  color: var(--text-color);
+}
+
+.normal-shadow{
+  box-shadow:  5px 5px 10px #323232,
+  -5px -5px 10px #444444;
+}
+
