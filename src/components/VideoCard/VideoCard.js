@@ -10,7 +10,7 @@ const VideoCard = () => {
                 <div className="card-title">
                     <h3 className="card-title-header">What's on My Bookshelf (2022)</h3>
                     <div className="card-menu">
-                    <i class="fas fa-ellipsis-v"></i>
+                    <i className="fas fa-ellipsis-v"></i>
                     </div>
                 </div>
                 <div className="card-description">

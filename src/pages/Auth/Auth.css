@@ -1,0 +1,66 @@
+@import url(../../App.css);
+
+.auth-container{
+    width: 100%;
+    height: calc(100vh - 16rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-title{
+    text-align: center;
+}
+
+.auth-box{
+    width: 30rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}
+
+.form{
+    align-items: center;
+    row-gap: 1rem
+}
+
+.form-group{
+    width: 100%;
+    color: var(--text-color);
+}
+
+.form-group input{
+    width: 100%;
+    color: var(--text-color);
+}
+
+.below-pass{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.remember-check{
+    display: flex;
+    column-gap: .5rem;
+    color: var(--text-color);
+}
+
+.remember-check input{
+    display: none;
+}
+
+.checkbox{
+    height: 1.5rem;
+    width: 1.5rem;
+    box-shadow: var(--normal-inset-shadow);
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+
+
+.button-submit{
+    width: 100%;
+}
