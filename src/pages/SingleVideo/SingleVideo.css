@@ -1,7 +1,6 @@
 @import url(../../App.css);
 
 .video-player {
-  padding: 0 2rem;
   width: 100%;
   height: fit-content;
 }
