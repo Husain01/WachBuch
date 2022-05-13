@@ -14,8 +14,8 @@ const VideoCard = () => {
                     </div>
                 </div>
                 <div className="card-description">
-                    <h4>Ali Abdaal</h4>
-                    <p>26 Apr 2022</p>
+                    <h4 className='author'>Ali Abdaal</h4>
+                    <p className='vid-date'>26 Apr 2022</p>
                 </div>
             </div>
         </div>

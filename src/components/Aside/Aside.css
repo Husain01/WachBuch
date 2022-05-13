@@ -4,6 +4,9 @@
     flex: 0 0 15rem;
     margin-right: 1rem;
     margin-top: 0;
+    position: sticky;
+    top: 6.5rem;
+    height: fit-content;
 }
 
 .aside ul{
