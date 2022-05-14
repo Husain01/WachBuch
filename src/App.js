@@ -2,6 +2,7 @@ import "./App.css";
 import  Navbar  from "./components/Navbar/Navbar";
 import './App.css'
 import { Route, Routes } from "react-router-dom";
+import Mockman from "mockman-js";
 import { History, Home, Liked, Playlist, SingleVideo, WatchLater } from "./pages";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
@@ -20,6 +21,7 @@ function App() {
        <Route path="/liked" element={<Liked/>}/> 
        <Route path="/watchlater" element={<WatchLater/>}/> 
        <Route path="/history" element={<History/>}/> 
+       <Route path="/mock" element={<Mockman />} />
       </Routes>
     </div>
   );
