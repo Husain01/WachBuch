@@ -7,12 +7,12 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <header className="navbar">
+        <Link to="/">
       <div className="logo">
-        {/* <Link to="/home"> */}
           <img src={logo} alt=""  />
           <img src={logo_txt} alt="" />
-        {/* </Link> */}
       </div>
+        </Link>
       <div className="search">
         <i className="fas fa-search"></i>
         <input
@@ -36,11 +36,11 @@ const Navbar = () => {
             Logout
           </button>
         ) : ( */}
-          {/* <Link to="/login"> */}
+          <Link to="/login">
             <button className="btn btn-primary btn-login normal-shadow">
               Login
             </button>
-          {/* </Link> */}
+          </Link>
         {/* )} */}
 
         

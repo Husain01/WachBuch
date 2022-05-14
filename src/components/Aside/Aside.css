@@ -4,19 +4,29 @@
     flex: 0 0 15rem;
     margin-right: 1rem;
     margin-top: 0;
+    position: sticky;
+    top: 6.5rem;
+    height: fit-content;
 }
 
 .aside ul{
     padding-left:  .5rem;
 }
 
-.aside ul li{
+.aside ul li {
     display: flex;
     align-items: center;
     height: 2.5rem;
     margin: .5rem 0;
     width: 100%;
     color: var(--text-color);
+}
+.aside ul li a{
+    color: var(--text-color);
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .aside ul li:first-child{

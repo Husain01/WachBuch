@@ -3,7 +3,7 @@ import Aside from '../../components/Aside/Aside';
 import VideoCard from '../../components/VideoCard/VideoCard';
 import './Home.css';
 
-const Home = () => {
+export const Home = () => {
   return (
     <div className='content-container'>
         <Aside></Aside>
@@ -19,4 +19,3 @@ const Home = () => {
   )
 }
 
-export default Home

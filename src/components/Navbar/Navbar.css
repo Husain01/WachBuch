@@ -1,46 +1,44 @@
 @import url(../../App.css);
 
-.navbar{
-    position: sticky;
-    top: 0;
-    padding: 2rem;
-    background-color: var(--bg-color);
-    z-index: 2;
-  }
-
-  .logo{
-      display: flex;
-  }
-
-  .logo img:first-child{
-      width: 100%;
-  }
-
-  .logo img{
-      height: 2.5rem;
-      width: 100%;
-  }
-
-  
-
-  .nav-links{
-      width: 7rem;
-  }
-
-.btn{
-    color: var(--text-color);
+.navbar {
+  position: sticky;
+  top: 0;
+  padding: 2rem;
+  background-color: var(--bg-color);
+  z-index: 2;
 }
 
-.search{
-    transform: translate(-22%, 3%)
+.logo {
+  display: flex;
 }
 
-.search .fas{
-color: var(--text-color);
+.logo img:first-child {
+  width: 100%;
+}
+
+.logo img {
+  height: 2.5rem;
+  width: 100%;
+}
+
+.nav-links {
+  width: 7rem;
+}
+
+.btn {
+  color: var(--text-color);
+}
+
+.search {
+  transform: translate(-22%, 3%);
+}
+
+.search .fas {
+  color: var(--text-color);
 }
 
 .search-input {
-    width: 26rem;
-    height: 2.3rem;
-    color: var(--text-color);
+  width: clamp(15rem, 26vw, 31rem);
+  height: 2.3rem;
+  color: var(--text-color);
 }

@@ -1,13 +1,13 @@
 @import url(../../App.css);
 
 
-h3{
+.card-title-header{
     font-size: 2rem;
     line-height: 2rem;
     color: var(--text-color);
 }
 
-h4, p{
+.author, .vid-date{
     font-size: 1.5rem;
     line-height: normal;
 }
