@@ -32,18 +32,19 @@ const Login = () => {
     if (user.email !== "" && user.password !== "") {
       try {
         const res = await loginService(user);
+        console.log(res)
         switch (res.status) {
           case 200:
-            const token = localStorage.setItem("token", res.data.encodedToken);
-            const user = localStorage.setItem(
+            localStorage.setItem("token", res.data.encodedToken);
+            localStorage.setItem(
               "user",
               JSON.stringify(res.data.foundUser)
             );
             authDispatch({
               type: "LOGIN",
               payload: {
-                user,
-                token,
+                user: res.data.foundUser,
+                token: res.data.encodedToken,
               },
             });
             navigate(location?.state?.from?.pathname || "/");
