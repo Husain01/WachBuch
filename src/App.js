@@ -14,8 +14,11 @@ import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 import { Navbar } from "./components/Navbar/Navbar";
 import { RequiresAuth } from "./RequiresAuth";
+import { useAuth } from "./context/Auth/AuthContext";
+import LoggedIn from "./pages/LoggedIn/LoggedIn";
 
 function App() {
+  const {authState} = useAuth();
   return (
     <div className="App">
       <Navbar></Navbar>
@@ -23,6 +26,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/video" element={<SingleVideo />} />
+        {authState.token && 
+        <Route path="/login" element={<LoggedIn />} />
+        }
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route
