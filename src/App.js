@@ -1,11 +1,11 @@
 import "./App.css";
-import  Navbar  from "./components/Navbar/Navbar";
 import './App.css'
 import { Route, Routes } from "react-router-dom";
 import Mockman from "mockman-js";
 import { History, Home, Liked, Playlist, SingleVideo, WatchLater } from "./pages";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
+import { Navbar } from "./components/Navbar/Navbar";
 
 function App() {
   return (
