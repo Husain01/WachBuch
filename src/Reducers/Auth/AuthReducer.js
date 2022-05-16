@@ -1,12 +1,8 @@
 const authReducer = (state, action) => {
   switch (action.type) {
-    case "SIGNUP":
-      return {
-        ...state,
-        user: action.payload.user,
-        token: action.payload.token,
-      };
     case "LOGIN":
+    case "SIGNUP":
+    case "CHECKUSER":
       return {
         ...state,
         user: action.payload.user,
@@ -18,15 +14,9 @@ const authReducer = (state, action) => {
         user: null,
         token: null,
       };
-    case "CHECKUSER":
-      return {
-        ...state,
-        user: action.payload.user,
-        token: action.payload.token,
-      };
-      default: 
+    default:
       return state;
   }
 };
 
-export {authReducer};
+export { authReducer };

@@ -32,7 +32,6 @@ const Login = () => {
     if (user.email !== "" && user.password !== "") {
       try {
         const res = await loginService(user);
-        console.log(res)
         switch (res.status) {
           case 200:
             localStorage.setItem("token", res.data.encodedToken);
