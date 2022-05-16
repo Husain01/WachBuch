@@ -14,3 +14,17 @@
     width: 100%;
     justify-items: center;
 }
+
+.category-list{
+    display: flex;
+    color: var(--text-color);
+    gap: 1.2rem;
+
+}
+
+.category{
+    margin-bottom: 2rem;
+    padding:0 1rem;
+    border-radius: 20px;
+    font-size: 1.5rem;
+}
