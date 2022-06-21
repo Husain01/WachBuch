@@ -1,11 +1,13 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import './VideoCard.css'
 
 const VideoCard = ({video}) => {
     const {_id, title, creator} = video;
-  return (
+    const navigate = useNavigate();
+    return (
     <>
-        <div className="card normal-shadow">
+        <div className="card normal-shadow" onClick={() => navigate(`/${_id}`)}>
             <img src={`https://i.ytimg.com/vi/${_id}/hq720.jpg`} alt="" className='card-img'/>
             <div className="card-footer">
                 <div className="card-title">

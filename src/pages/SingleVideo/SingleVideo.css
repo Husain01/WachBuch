@@ -20,6 +20,9 @@
   display: flex;
   justify-content: space-between;
 }
+.video-desc p {
+  margin-top: 1rem;
+}
 
 .vid-title {
   line-height: 3rem;

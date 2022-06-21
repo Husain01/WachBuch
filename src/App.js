@@ -25,7 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/video" element={<SingleVideo />} />
+        <Route path="/:videoId" element={<SingleVideo />} />
         {authState.token && 
         <Route path="/login" element={<LoggedIn />} />
         }
