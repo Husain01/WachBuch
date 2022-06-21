@@ -28,3 +28,7 @@
     border-radius: 20px;
     font-size: 1.5rem;
 }
+
+.normal-inset-shadow{
+    box-shadow: var(--normal-inset-shadow);
+}

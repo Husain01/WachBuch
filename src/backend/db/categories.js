@@ -8,6 +8,12 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
+    categoryName: "All",
+    description:
+      "",
+  },
+  {
+    _id: uuid(),
     categoryName: "Fiction",
     description:
       "literature in the form of prose, especially novels, that describes imaginary events and people",
