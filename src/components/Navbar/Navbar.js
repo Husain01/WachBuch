@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo-sm.png";
 import logo_txt from "../../assets/logo-txt.png";
 import { useAuth } from "../../context/Auth/AuthContext";
+import { useData } from "../../context/Video/VideoContext";
 import "./Navbar.css";
 
 export const Navbar = () => {
@@ -15,6 +16,16 @@ export const Navbar = () => {
     authDispatch({
       type: "LOGOUT",
     });
+  };
+  const [input, setInput] = useState("");
+  const { dispatch } = useData();
+  const searchHandler = (e) => {
+    if (e.key === "Enter" || e.keyCode === 8 || e.target.value === "") {
+      dispatch({
+        type: "SEARCH",
+        payload: e.target.value,
+      });
+    }
   };
   return (
     <header className="navbar">
@@ -30,12 +41,9 @@ export const Navbar = () => {
           type="text"
           className="search-input"
           placeholder="Search"
-          //   onChange={(e) => {
-          //     productDispatch({
-          //       type: "FILTER_BY_SEARCH",
-          //       payload: e.target.value,
-          //     });
-          //   }}
+          value={input}
+          onKeyDown={(e) => searchHandler(e)}
+          onChange={(e) => setInput(e.target.value)}
         />
       </div>
       <div className="nav-links">
@@ -57,5 +65,3 @@ export const Navbar = () => {
     </header>
   );
 };
-
- 
