@@ -6,18 +6,24 @@ import {
   MdWatchLater,
 } from "react-icons/md";
 import ReactPlayer from "react-player/lazy";
+import { useParams } from "react-router-dom";
 import Aside from "../../components/Aside/Aside";
+import { useData } from "../../context/Video/VideoContext";
 import "./SingleVideo.css";
 
 export const SingleVideo = () => {
-  return (
+  const { videoId } = useParams();
+  const { videos } = useData();
+
+  const video = videos?.find((video) => video._id === videoId);
+  return video ? (
     <div className="content-container">
       <Aside></Aside>
       <div className="main-content">
         <div className="video-player">
           <div className="player normal-shadow">
             <ReactPlayer
-              url={"https://www.youtube.com/watch?v=UlIDxrK43ko"}
+              url={`https://www.youtube.com/watch?v=${video._id}`}
               controls={true}
               playing={true}
               pip={true}
@@ -27,8 +33,8 @@ export const SingleVideo = () => {
           </div>
           <div className="video-description">
             <div className="video-title">
-              <h3 className="vid-title">What's on My Bookshelf (2022)</h3>
-              <h5 className="vid-author">Ali Abdaal</h5>
+              <h3 className="vid-title">{video.title}</h3>
+              <h5 className="vid-author">{video.creator}</h5>
             </div>
             <div className="video-options">
               <div className="vid-actions">
@@ -42,8 +48,13 @@ export const SingleVideo = () => {
               </div>
             </div>
           </div>
+          <div className="video-desc">
+            <p>{video.description}</p>
+          </div>
         </div>
       </div>
     </div>
+  ) : (
+    <></>
   );
 };
