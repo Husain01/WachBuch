@@ -68,7 +68,6 @@
 }
 
 .menu-list div:hover{
-    /* filter: brightness(.7); */
     background-color: #242222;
     border-radius: 5px;
 }
