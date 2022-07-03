@@ -7,7 +7,7 @@ import {
   MdWatchLater,
 } from "react-icons/md";
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({ video , children}) => {
   const { _id, title, creator } = video;
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -31,14 +31,7 @@ const VideoCard = ({ video }) => {
             <div className="card-menu" onClick={() => setOpen(!open)}>
               <i className="fas fa-ellipsis-v"></i>
               <div className={`menu-list ${open ? "" : "menu-list-hide"}`}>
-                <div>
-                  <MdOutlineWatchLater />
-                  Add to Watch Later
-                </div>
-                <div>
-                  <MdPlaylistAdd />
-                  Add to Playlist
-                </div>
+                {children}
               </div>
             </div>
           </div>

@@ -48,7 +48,7 @@ const Aside = () => {
             </NavLink>
           </li>
           <li>
-          <NavLink to={token ? '/history': "/login"}  className={({ isActive }) =>
+          <NavLink to='/history'  className={({ isActive }) =>
               isActive ? "active" : ""
             }>
             <MdHistory className="aside-icon"></MdHistory>

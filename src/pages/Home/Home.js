@@ -3,6 +3,13 @@ import Aside from "../../components/Aside/Aside";
 import VideoCard from "../../components/VideoCard/VideoCard";
 import { useData } from "../../context/Video/VideoContext";
 import "./Home.css";
+import DropDownMenu from '../../components/DropDown/DropDownMenu/DropDownMenu';
+import DropDownItems from '../../components/DropDown/DropDownItem/DropDownItem'
+import {
+  MdOutlineWatchLater,
+  MdPlaylistAdd,
+  MdWatchLater,
+} from "react-icons/md";
 
 export const Home = () => {
   const { category, videos, dispatch, sortBy, search } = useData();
@@ -49,7 +56,16 @@ export const Home = () => {
         </div>
         <div className="responsive-grid">
           {sortByCategory.map((video) => (
-            <VideoCard key={video.id} video={video} />
+            <VideoCard key={video.id} video={video} >
+              <DropDownMenu>
+                <DropDownItems icon={<MdOutlineWatchLater/>}>
+                Add to Watch Later
+                </DropDownItems>
+                <DropDownItems icon={<MdPlaylistAdd/>}>
+                Add to Playlist
+                </DropDownItems>
+              </DropDownMenu>
+            </VideoCard>
           ))}
         </div>
       </main>
