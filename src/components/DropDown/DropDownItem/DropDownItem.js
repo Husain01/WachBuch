@@ -1,6 +1,6 @@
 const DropDownItem = (props) => {
     return (<>  
-         <div>
+         <div className={props.danger}>
                      {props.icon}
            {props.children}
                    </div>

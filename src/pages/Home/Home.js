@@ -58,7 +58,7 @@ export const Home = () => {
           {sortByCategory.map((video) => (
             <VideoCard key={video.id} video={video} >
               <DropDownMenu>
-                <DropDownItems icon={<MdOutlineWatchLater/>}>
+                <DropDownItems icon={<MdOutlineWatchLater/>} >
                 Add to Watch Later
                 </DropDownItems>
                 <DropDownItems icon={<MdPlaylistAdd/>}>
