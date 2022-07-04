@@ -44,7 +44,7 @@ const DataProvider = ({children}) => {
             category: state.category,
             sortBy: state.sortBy,
             dispatch: dispatch,
-            search: state.search
+            search: state.search,
         }}>
             {children}
         </DataContext.Provider>

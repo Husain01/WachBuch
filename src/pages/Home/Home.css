@@ -4,6 +4,7 @@
     box-shadow: var(--normal-inset-shadow);
     border-radius: 10px;
     padding: 2rem;
+    /* height: 86vh; */
 }
 
 .responsive-grid{

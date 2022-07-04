@@ -8,7 +8,14 @@ export const videoReducer = (state, action) => {
     case "INIT_VIDEOS":
       return {
         ...state,
-        videos: action.payload,
+        videos: [
+          ...action.payload.map((video) => ({
+            ...video,
+            inHistory: false,
+            inWatchLater: false,
+            inLiked: false, 
+          }))
+        ],
       };
     case "SORTBY":
       return {
@@ -25,6 +32,14 @@ export const videoReducer = (state, action) => {
             ...state,
             search: action.payload,
         }
+    case "HISTORY":
+      return {
+        ...state,
+        videos: state.videos.map((video) => ({
+          ...video,
+          inHistory: action.payload.some((e)=> e._id === video._id),
+        }))
+      }
     default:
         return {
             ...state
