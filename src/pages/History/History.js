@@ -5,7 +5,7 @@ import { useAuth } from "../../context/Auth/AuthContext";
 import { useData } from "../../context/Video/VideoContext";
 import './History.css';
 import {MdDelete, MdOutlineWatchLater, MdPlaylistAdd} from 'react-icons/md';
-import { clearHistory } from "../../services/historyService/historyService";
+import { clearHistory, removeFromHistory } from "../../services/historyService/historyService";
 import VideoCard from "../../components/VideoCard/VideoCard";
 import DropDownMenu from "../../components/DropDown/DropDownMenu/DropDownMenu";
 import DropDownItem from "../../components/DropDown/DropDownItem/DropDownItem";
@@ -14,6 +14,7 @@ import DropDownItem from "../../components/DropDown/DropDownItem/DropDownItem";
 
 export const History = () => {
   const { dispatch, videos} = useData();
+  // const {_id} = videos;
   const token = localStorage.getItem('token');
   const history = videos.filter((vid) => vid.inHistory);
   const isHistory = history.length > 0;
@@ -39,7 +40,7 @@ export const History = () => {
           {isHistory ? (
             <div className="responsive-grid">
             {history.slice(0).reverse().map((video) => (
-              <VideoCard key={video.id} video={video} >
+              <VideoCard key={video._id} video={video} >
               <DropDownMenu>
                 <DropDownItem icon={<MdOutlineWatchLater/>} >
                 Add to Watch Later
@@ -47,7 +48,7 @@ export const History = () => {
                 <DropDownItem icon={<MdPlaylistAdd/>}>
                 Add to Playlist
                 </DropDownItem>
-                <DropDownItem icon={<MdDelete/>} danger={"danger"}>
+                <DropDownItem icon={<MdDelete/>} danger={"danger"} onClick={()=> { removeFromHistory(dispatch, video._id, token) }}>
                 Remove from History
                 </DropDownItem>
               </DropDownMenu>

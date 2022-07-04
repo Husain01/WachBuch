@@ -1,5 +1,4 @@
 import axios from "axios";
-import { MdHorizontalSplit } from "react-icons/md";
 
 export const addToHistory = (dispatch, video, token) => {
   try {
