@@ -19,7 +19,7 @@ export const addToHistory = (dispatch, video, token) => {
         );
         history &&
           dispatch({
-            type: "ADD_TO_HISTORY",
+            type: "HISTORY",
             payload: history,
           });
       })();
@@ -39,7 +39,7 @@ export const removeFromHistory = (dispatch, id, token) => {
                 },
             });
             history && dispatch({
-                type: "REMOVE_FROM_HISTORY",
+                type: "HISTORY",
                 payload: history,
             })
         })();
@@ -59,7 +59,7 @@ export const clearHistory = (dispatch, token) => {
                 },
             });
             history && dispatch({
-                type: "CLEAR_HISTORY",
+                type: "HISTORY",
                 payload: history,
             })
         })();

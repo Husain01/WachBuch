@@ -9,7 +9,6 @@ const initialState = {
     category: [],
     sortBy: "",
     search: "",
-    history: [],
 }
 
 const DataProvider = ({children}) => {
@@ -46,7 +45,6 @@ const DataProvider = ({children}) => {
             sortBy: state.sortBy,
             dispatch: dispatch,
             search: state.search,
-            history: state.history,
         }}>
             {children}
         </DataContext.Provider>

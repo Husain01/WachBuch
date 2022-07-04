@@ -13,8 +13,9 @@ import DropDownItem from "../../components/DropDown/DropDownItem/DropDownItem";
 
 
 export const History = () => {
-  const {history, dispatch} = useData();
+  const { dispatch, videos} = useData();
   const token = localStorage.getItem('token');
+  const history = videos.filter((vid) => vid.inHistory);
   const isHistory = history.length > 0;
   // const isHistory = true;
   const navigate = useNavigate();

@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/Auth/AuthContext";
 import { useData } from "../../context/Video/VideoContext";
 import { addToHistory } from "../../services/historyService/historyService";
 import "./VideoCard.css";
 
 
 const VideoCard = ({ video , children}) => {
-  const { _id, title, creator } = video;
+  const { _id, title, creator, inHistory } = video;
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const token = localStorage.getItem('token');
-  const { dispatch, history } = useData();
-  const isInHistory = history.find((vid) => vid.id === _id);
+  const { dispatch } = useData();
   const addVideotoHistoryHandler = () => {
     navigate(`/${_id}`);
-    !isInHistory && addToHistory(dispatch, video, token);
+    !inHistory && addToHistory(dispatch, video, token);
     
   }
   return (
