@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/Auth/AuthContext";
+import { useData } from "../../context/Video/VideoContext";
+import { addToHistory } from "../../services/historyService/historyService";
 import "./VideoCard.css";
-import {
-  MdOutlineWatchLater,
-  MdPlaylistAdd,
-  MdWatchLater,
-} from "react-icons/md";
+
 
 const VideoCard = ({ video , children}) => {
   const { _id, title, creator } = video;
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const token = localStorage.getItem('token');
+  const { dispatch, history } = useData();
+  const isInHistory = history.find((vid) => vid.id === _id);
+  const addVideotoHistoryHandler = () => {
+    navigate(`/${_id}`);
+    !isInHistory && addToHistory(dispatch, video, token);
+    
+  }
   return (
     <>
       <div className="card normal-shadow">
         <img
-          onClick={() => navigate(`/${_id}`)}
+          onClick={() => addVideotoHistoryHandler() }
           src={`https://i.ytimg.com/vi/${_id}/hq720.jpg`}
           alt=""
           className="card-img"
@@ -24,7 +31,7 @@ const VideoCard = ({ video , children}) => {
           <div className="card-title">
             <h3
               className="card-title-header"
-              onClick={() => navigate(`/${_id}`)}
+              onClick={() => addVideotoHistoryHandler()}
             >
               {title}
             </h3>

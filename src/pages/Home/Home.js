@@ -61,7 +61,7 @@ export const Home = () => {
                 <DropDownItems icon={<MdOutlineWatchLater/>} >
                 Add to Watch Later
                 </DropDownItems>
-                <DropDownItems icon={<MdPlaylistAdd/>}>
+                <DropDownItems icon={<MdPlaylistAdd/>} >
                 Add to Playlist
                 </DropDownItems>
               </DropDownMenu>

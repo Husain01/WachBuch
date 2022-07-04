@@ -1,1 +1,46 @@
 @import url(../../App.css);
+
+.title-container{
+    display: flex;
+    align-items: center;
+}
+
+
+.title-container-sub{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.title-container-sub p{
+    margin: 1rem;
+}
+
+.title-container-sub button{
+    background-color: var(--danger-color);
+}
+
+.btn-history{
+    display: flex;
+    align-items: center;
+    padding:0 .7rem;
+    padding-left: .5rem;
+}
+
+.btn-history:active{
+    box-shadow: inset 5px 5px 10px #c52d3a,
+    inset -5px -5px 10px #ff3d4e;
+}
+
+.delete-icon{
+    margin-bottom: .2rem;
+}
+
+.empty-history{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 72vh;
+    align-items: center;
+    justify-content: center;
+}
