@@ -9,13 +9,16 @@ import ReactPlayer from "react-player/lazy";
 import { useParams } from "react-router-dom";
 import Aside from "../../components/Aside/Aside";
 import { useData } from "../../context/Video/VideoContext";
+import { watchLaterHandler } from "../../utils/watchLaterUtils";
 import "./SingleVideo.css";
 
 export const SingleVideo = () => {
   const { videoId } = useParams();
-  const { videos } = useData();
+  const { videos, dispatch } = useData();
+  const token = localStorage.getItem("token")
 
   const video = videos?.find((video) => video._id === videoId);
+  const inWatchLater = video && video.inWatchLater;
   return video ? (
     <div className="content-container">
       <Aside></Aside>
@@ -38,13 +41,13 @@ export const SingleVideo = () => {
             </div>
             <div className="video-options">
               <div className="vid-actions">
-                <IoMdHeartEmpty></IoMdHeartEmpty>
+                <IoMdHeartEmpty/>
               </div>
               <div className="vid-actions">
-                <MdPlaylistAdd></MdPlaylistAdd>
+                <MdPlaylistAdd/>
               </div>
-              <div className="vid-actions">
-                <MdOutlineWatchLater></MdOutlineWatchLater>
+              <div className="vid-actions" onClick={() => watchLaterHandler(dispatch, video, token)}>
+                {inWatchLater?<MdWatchLater/>:<MdOutlineWatchLater/>}
               </div>
             </div>
           </div>

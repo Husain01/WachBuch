@@ -40,6 +40,14 @@ export const videoReducer = (state, action) => {
           inHistory: action.payload.some((e)=> e._id === video._id),
         }))
       }
+    case "WATCH_LATER":
+      return {
+        ...state,
+        videos: state.videos.map((video) => ({
+          ...video,
+          inWatchLater: action.payload.some((e) => e._id === video._id)
+        }))
+      }
     default:
         return {
             ...state
