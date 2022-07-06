@@ -1,14 +1,16 @@
 import React from "react";
-import { IoMdHeartEmpty } from "react-icons/io";
 import {
   MdOutlineWatchLater,
   MdPlaylistAdd,
+  MdThumbUp,
+  MdThumbUpOffAlt,
   MdWatchLater,
 } from "react-icons/md";
 import ReactPlayer from "react-player/lazy";
 import { useParams } from "react-router-dom";
 import Aside from "../../components/Aside/Aside";
 import { useData } from "../../context/Video/VideoContext";
+import { likedHandler } from "../../utils/LikedUtils";
 import { watchLaterHandler } from "../../utils/watchLaterUtils";
 import "./SingleVideo.css";
 
@@ -19,6 +21,7 @@ export const SingleVideo = () => {
 
   const video = videos?.find((video) => video._id === videoId);
   const inWatchLater = video && video.inWatchLater;
+  const inLiked = video && video.inLiked;
   return video ? (
     <div className="content-container">
       <Aside></Aside>
@@ -40,8 +43,8 @@ export const SingleVideo = () => {
               <h5 className="vid-author">{video.creator}</h5>
             </div>
             <div className="video-options">
-              <div className="vid-actions">
-                <IoMdHeartEmpty/>
+              <div className="vid-actions" onClick={() => likedHandler(dispatch, video, token)}>
+                {inLiked?<MdThumbUp/>:<MdThumbUpOffAlt/>}
               </div>
               <div className="vid-actions">
                 <MdPlaylistAdd/>
