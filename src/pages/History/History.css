@@ -3,14 +3,22 @@
 .title-container{
     display: flex;
     align-items: center;
+    width: 100%;
+}
+.title-container h3{
+    width: fit-content;
+}
+.title-container p{
+    width: fit-content;
+    margin: 1rem;
 }
 
 
 .title-container-sub{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    width: 100%;
+    margin-left: auto;
 }
 .title-container-sub p{
     margin: 1rem;
@@ -36,7 +44,7 @@
     margin-bottom: .2rem;
 }
 
-.empty-history{
+.empty-option{
     display: flex;
     flex-direction: column;
     width: 100%;
