@@ -7,7 +7,7 @@ import {
   MdWatchLater,
 } from "react-icons/md";
 import ReactPlayer from "react-player/lazy";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Aside from "../../components/Aside/Aside";
 import { useData } from "../../context/Video/VideoContext";
 import { likedHandler } from "../../utils/LikedUtils";
@@ -17,7 +17,8 @@ import "./SingleVideo.css";
 export const SingleVideo = () => {
   const { videoId } = useParams();
   const { videos, dispatch } = useData();
-  const token = localStorage.getItem("token")
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   const video = videos?.find((video) => video._id === videoId);
   const inWatchLater = video && video.inWatchLater;
@@ -43,14 +44,24 @@ export const SingleVideo = () => {
               <h5 className="vid-author">{video.creator}</h5>
             </div>
             <div className="video-options">
-              <div className="vid-actions" onClick={() => likedHandler(dispatch, video, token)}>
-                {inLiked?<MdThumbUp/>:<MdThumbUpOffAlt/>}
+              <div
+                className="vid-actions"
+                onClick={() =>token ? likedHandler(dispatch, video, token) : navigate("/login")}
+              >
+                {inLiked ? <MdThumbUp /> : <MdThumbUpOffAlt />}
               </div>
               <div className="vid-actions">
-                <MdPlaylistAdd/>
+                <MdPlaylistAdd />
               </div>
-              <div className="vid-actions" onClick={() => watchLaterHandler(dispatch, video, token)}>
-                {inWatchLater?<MdWatchLater/>:<MdOutlineWatchLater/>}
+              <div
+                className="vid-actions"
+                onClick={() =>
+                  token
+                    ? watchLaterHandler(dispatch, video, token)
+                    : navigate("/login")
+                }
+              >
+                {inWatchLater ? <MdWatchLater /> : <MdOutlineWatchLater />}
               </div>
             </div>
           </div>
