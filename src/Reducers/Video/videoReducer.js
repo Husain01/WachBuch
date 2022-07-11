@@ -13,8 +13,8 @@ export const videoReducer = (state, action) => {
             ...video,
             inHistory: false,
             inWatchLater: false,
-            inLiked: false, 
-          }))
+            inLiked: false,
+          })),
         ],
       };
     case "SORTBY":
@@ -28,37 +28,47 @@ export const videoReducer = (state, action) => {
         ),
       };
     case "SEARCH":
-        return {
-            ...state,
-            search: action.payload,
-        }
+      return {
+        ...state,
+        search: action.payload,
+      };
     case "HISTORY":
       return {
         ...state,
         videos: state.videos.map((video) => ({
           ...video,
-          inHistory: action.payload.some((e)=> e._id === video._id),
-        }))
-      }
+          inHistory: action.payload.some((e) => e._id === video._id),
+        })),
+      };
     case "WATCH_LATER":
       return {
         ...state,
         videos: state.videos.map((video) => ({
           ...video,
-          inWatchLater: action.payload.some((e) => e._id === video._id)
-        }))
-      }
+          inWatchLater: action.payload.some((e) => e._id === video._id),
+        })),
+      };
     case "LIKE":
       return {
         ...state,
         videos: state.videos.map((video) => ({
           ...video,
-          inLiked: action.payload.some((e)=> e._id === video._id)
-        }))
-      }
-    default:
+          inLiked: action.payload.some((e) => e._id === video._id),
+        })),
+      };
+    case "PLAYLIST":
+      return {
+        ...state,
+        playlist: action.payload,
+      };
+      case "VIDEO_IN_PLAYLIST":
         return {
-            ...state
+          ...state,
+          playlist: state.playlist.map((list) => list._id === action.payload._id ? action.payload : list)
         }
+    default:
+      return {
+        ...state,
+      };
   }
 };

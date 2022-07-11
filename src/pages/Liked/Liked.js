@@ -10,7 +10,7 @@ import { removefromLiked } from '../../services/likedService/likedService';
 import { watchLaterHandler } from '../../utils/watchLaterUtils';
 
 export const Liked = () => {
-  const {dispatch, videos} = useData();
+  const {dispatch, videos, setModal, setModalData} = useData();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
@@ -35,6 +35,14 @@ export const Liked = () => {
               {
                 liked.slice(0).reverse().map((video) => {
                   const {_id, inWatchLater } = video;
+                  const addToPlaylist = () => {
+                    if (token) {
+                      setModal(true);
+                      setModalData(video);
+                    } else {
+                      navigate("/login");
+                    }
+                  };
                   return (
                     <VideoCard key={_id} video={video}>
                     <DropDownMenu>
@@ -49,7 +57,7 @@ export const Liked = () => {
                           ? "Remove from Watch Later"
                           : "Add to Watch Later"}
                       </DropDownItem>
-                      <DropDownItem icon={<MdPlaylistAdd />}>
+                      <DropDownItem icon={<MdPlaylistAdd />} onClick={() => addToPlaylist()}>
                         Add to Playlist
                       </DropDownItem>
                       <DropDownItem icon={<MdDelete/>} danger={"danger"} onClick={()=> removefromLiked(dispatch, _id, token)}>

@@ -9,7 +9,7 @@ import { useData } from "../../context/Video/VideoContext";
 import { removeFromWatchLater } from "../../services/watchLaterService/watchLaterService";
 
 export const WatchLater = () => {
-  const { dispatch, videos } = useData();
+  const { dispatch, videos, setModal, setModalData } = useData();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
@@ -35,6 +35,14 @@ export const WatchLater = () => {
               .reverse()
               .map((video) => {
                 const { _id } = video;
+                const addToPlaylist = () => {
+                  if (token) {
+                    setModal(true);
+                    setModalData(video);
+                  } else {
+                    navigate("/login");
+                  }
+                };
                 return (
                   <VideoCard key={_id} video={video}>
                     <DropDownMenu>
@@ -47,7 +55,7 @@ export const WatchLater = () => {
                       >
                         Remove from Watch Later
                       </DropDownItem>
-                      <DropDownItem icon={<MdPlaylistAdd />}>
+                      <DropDownItem icon={<MdPlaylistAdd />} onClick={()=> addToPlaylist()}>
                         Add to Playlist
                       </DropDownItem>
                     </DropDownMenu>

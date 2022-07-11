@@ -1,0 +1,24 @@
+.card-footer-playlist{
+    min-height: 4rem;
+}
+
+.card-playlist{
+    min-height: 16rem;
+    position: relative;
+}
+
+.card-highlight{
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color);
+    height: 80%;
+    width: 40%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    opacity: 0.9;
+    gap:.6rem;
+    color: var(--text-color);
+}

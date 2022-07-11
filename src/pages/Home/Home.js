@@ -14,7 +14,8 @@ import { watchLaterHandler } from "../../utils/watchLaterUtils";
 import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
-  const { category, videos, dispatch, sortBy, search } = useData();
+  const { category, videos, dispatch, sortBy, search, setModal, setModalData } =
+    useData();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
@@ -44,6 +45,7 @@ export const Home = () => {
   const addToWatchLater = (dispatch, video, token) => {
     token ? watchLaterHandler(dispatch, video, token) : navigate("/login");
   };
+
   return (
     <div className="content-container">
       <Aside></Aside>
@@ -64,6 +66,14 @@ export const Home = () => {
         <div className="responsive-grid">
           {sortByCategory.map((video) => {
             const { _id, inWatchLater } = video;
+            const addToPlaylist = () => {
+              if (token) {
+                setModal(true);
+                setModalData(video);
+              } else {
+                navigate("/login");
+              }
+            };
             return (
               <VideoCard key={_id} video={video}>
                 <DropDownMenu>
@@ -76,7 +86,10 @@ export const Home = () => {
                       ? "Remove from Watch Later"
                       : "Add to Watch Later"}
                   </DropDownItems>
-                  <DropDownItems icon={<MdPlaylistAdd />}>
+                  <DropDownItems
+                    icon={<MdPlaylistAdd />}
+                    onClick={() => addToPlaylist()}
+                  >
                     Add to Playlist
                   </DropDownItems>
                 </DropDownMenu>
