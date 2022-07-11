@@ -33,7 +33,6 @@ export const PlaylistVideos = () => {
             <div className="responsive-grid">
                 {videos.slice(0).reverse().map((video)=> {
                     const { _id } = video;
-                    console.log(_id)
                     return (
                         <VideoCard key={_id} video={video}>
                             <DropDownMenu>

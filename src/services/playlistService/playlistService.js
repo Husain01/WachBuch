@@ -70,7 +70,6 @@ export const addVideoToPlaylist = (dispatch, id, video, token) => {
 };
 
 export const removeVideoFromPlaylist = (dispatch, id, videoId, token) => {
-    console.log(id, videoId, token);
     try {
         (async () => {
             const {
