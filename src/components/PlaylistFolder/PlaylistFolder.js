@@ -6,7 +6,6 @@ import './PlaylistFolder.css';
 
 
 const PlaylistFolder = ({ listFolder , children}) => {
-    console.log(listFolder)
   const { _id, title, videos, } = listFolder;
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
