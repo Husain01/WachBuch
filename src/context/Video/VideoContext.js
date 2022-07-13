@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import { createContext, useContext, useEffect, useReducer, useState } from 'react';
 import { videoReducer } from '../../Reducers/Video/videoReducer';
 
 const DataContext = createContext();
@@ -9,11 +9,14 @@ const initialState = {
     category: [],
     sortBy: "",
     search: "",
+    playlist: [],
 }
 
 const DataProvider = ({children}) => {
     const [state, dispatch] = useReducer(videoReducer, initialState);
-    
+    const [modal, setModal] = useState(false);
+    const [modalData, setModalData] = useState({});
+
     useEffect(() => {
         (async () => {
           try {
@@ -45,6 +48,11 @@ const DataProvider = ({children}) => {
             sortBy: state.sortBy,
             dispatch: dispatch,
             search: state.search,
+            playlist: state.playlist,
+            modal,
+            setModal,
+            modalData,
+            setModalData,
         }}>
             {children}
         </DataContext.Provider>

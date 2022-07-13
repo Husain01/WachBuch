@@ -14,7 +14,7 @@ import DropDownItem from "../../components/DropDown/DropDownItem/DropDownItem";
 import { watchLaterHandler } from "../../utils/watchLaterUtils";
 
 export const History = () => {
-  const { dispatch, videos } = useData();
+  const { dispatch, videos, setModal, setModalData } = useData();
   const token = localStorage.getItem("token");
   const history = videos.filter((vid) => vid.inHistory);
   const isHistory = history.length > 0;
@@ -49,6 +49,14 @@ export const History = () => {
               .reverse()
               .map((video) => {
                 const { _id, inWatchLater } = video;
+                const addToPlaylist = () => {
+                  if (token) {
+                    setModal(true);
+                    setModalData(video);
+                  } else {
+                    navigate("/login");
+                  }
+                };
                 return (
                   <VideoCard key={_id} video={video}>
                     <DropDownMenu>
@@ -63,7 +71,7 @@ export const History = () => {
                           ? "Remove from Watch Later"
                           : "Add to Watch Later"}
                       </DropDownItem>
-                      <DropDownItem icon={<MdPlaylistAdd />}>
+                      <DropDownItem icon={<MdPlaylistAdd />} onClick={() => addToPlaylist()} >
                         Add to Playlist
                       </DropDownItem>
                       <DropDownItem

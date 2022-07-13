@@ -16,13 +16,22 @@ import "./SingleVideo.css";
 
 export const SingleVideo = () => {
   const { videoId } = useParams();
-  const { videos, dispatch } = useData();
+  const { videos, dispatch, setModal, setModalData } = useData();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   const video = videos?.find((video) => video._id === videoId);
   const inWatchLater = video && video.inWatchLater;
   const inLiked = video && video.inLiked;
+
+  const addToPlaylist = () => {
+    if(token) {
+      setModal(true);
+      setModalData(video);
+    } else {
+      navigate("/login");
+    }
+  }
   return video ? (
     <div className="content-container">
       <Aside></Aside>
@@ -50,7 +59,7 @@ export const SingleVideo = () => {
               >
                 {inLiked ? <MdThumbUp /> : <MdThumbUpOffAlt />}
               </div>
-              <div className="vid-actions">
+              <div className="vid-actions" onClick={() => addToPlaylist()}>
                 <MdPlaylistAdd />
               </div>
               <div

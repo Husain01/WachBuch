@@ -16,11 +16,14 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { RequiresAuth } from "./RequiresAuth";
 import { useAuth } from "./context/Auth/AuthContext";
 import LoggedIn from "./pages/LoggedIn/LoggedIn";
+import { PlaylistModal } from "./components/PlaylistModal/PlaylistModal";
+import { PlaylistVideos } from "./pages/Playlist/PlaylistVideos";
 
 function App() {
   const {authState} = useAuth();
   return (
     <div className="App">
+      <PlaylistModal/>
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -36,6 +39,14 @@ function App() {
           element={
             <RequiresAuth>
               <Playlist />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/playlist/:playListId"
+          element={
+            <RequiresAuth>
+              <PlaylistVideos />
             </RequiresAuth>
           }
         />
