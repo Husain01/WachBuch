@@ -7,20 +7,26 @@ import {
   removeVideoFromPlaylist,
 } from "../../services/playlistService/playlistService";
 import "./PlaylistModal.css";
+import {MiniLoader, miniLoader} from '../Loader/MiniLoader'
+
 
 export const PlaylistModal = () => {
+  
   // const [modal, setModal] = useState(true);
   // const {dispatch} = useData();
   const { modal, setModal, dispatch, playlist, modalData } = useData();
   const [showInput, setShowInput] = useState(false);
   const token = localStorage.getItem("token");
   const [playlistName, setPlaylistName] = useState("");
+  const [miniLoader, setMiniLoader] = useState(false)
 
   const createHandler = () => {
+    
     setShowInput(true);
     playlistName &&
-      createNewPlaylist(dispatch, playlistName, token, setShowInput);
-    setPlaylistName("");
+      createNewPlaylist(dispatch, playlistName, token, setShowInput, setMiniLoader);
+      
+      setPlaylistName("");
   };
   return (
     <div
@@ -33,7 +39,7 @@ export const PlaylistModal = () => {
           <h5>Save to</h5>
           <MdClose className="dismiss" onClick={() => setModal(!modal)} />
         </div>
-        {playlist.length > 0 &&
+        {miniLoader? (<MiniLoader/>) :  (playlist.length > 0 &&
           playlist.map((list) => {
             const isInPlaylist = list.videos.some(
               (list) => list._id === modalData._id
@@ -51,13 +57,15 @@ export const PlaylistModal = () => {
                             dispatch,
                             list._id,
                             modalData,
-                            token
+                            token,
+                            setMiniLoader
                           )
                         : removeVideoFromPlaylist(
                             dispatch,
                             list._id,
                             modalData._id,
-                            token
+                            token,
+                            setMiniLoader
                           )
                     }
                   />
@@ -65,7 +73,7 @@ export const PlaylistModal = () => {
                 </label>
               </div>
             );
-          })}
+          }))}
 
         <div
           className={`modal-input ${

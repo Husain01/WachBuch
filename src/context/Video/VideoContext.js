@@ -16,9 +16,11 @@ const DataProvider = ({children}) => {
     const [state, dispatch] = useReducer(videoReducer, initialState);
     const [modal, setModal] = useState(false);
     const [modalData, setModalData] = useState({});
+    const [loader, setLoader] = useState(false)
 
     useEffect(() => {
         (async () => {
+          setLoader(true)
           try {
             const {
               data: { categories },
@@ -35,6 +37,9 @@ const DataProvider = ({children}) => {
               type: "INIT_VIDEOS",
               payload: [...videos],
             });
+            setTimeout(() => {
+              setLoader(() => false);
+            }, 200);
           } catch (error) {
             console.log(error);
           }
@@ -53,6 +58,8 @@ const DataProvider = ({children}) => {
             setModal,
             modalData,
             setModalData,
+            loader,
+            setLoader
         }}>
             {children}
         </DataContext.Provider>
