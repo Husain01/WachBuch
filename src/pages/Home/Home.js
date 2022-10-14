@@ -12,19 +12,24 @@ import {
 } from "react-icons/md";
 import { watchLaterHandler } from "../../utils/watchLaterUtils";
 import { useNavigate } from "react-router-dom";
+import { Loader } from "../../components/Loader/Loader";
+
 
 export const Home = () => {
-  const { category, videos, dispatch, sortBy, search, setModal, setModalData } =
+  const { category, videos, dispatch, sortBy, search, setModal, setModalData, loader, setLoader } =
     useData();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   const sortHandler = (catName) => {
-    console.log(catName);
-    dispatch({
-      type: "SORTBY",
-      payload: catName,
-    });
+    setLoader(true)
+    setTimeout(() => {
+      dispatch({
+        type: "SORTBY",
+        payload: catName,
+      });
+      setLoader(false)
+    }, 500)
   };
 
   const sortVideos = (videos, sortBy) => {
@@ -50,6 +55,7 @@ export const Home = () => {
     <div className="content-container">
       <Aside></Aside>
       <main className="main-content">
+        {loader ? <Loader/>: <>
         <div className="category-list">
           {category.map(({ _id, categoryName, isActive }) => (
             <div
@@ -97,6 +103,8 @@ export const Home = () => {
             );
           })}
         </div>
+        </>
+        }
       </main>
     </div>
   );

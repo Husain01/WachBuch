@@ -1,5 +1,4 @@
 import "./App.css";
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Mockman from "mockman-js";
 import {
@@ -18,13 +17,17 @@ import { useAuth } from "./context/Auth/AuthContext";
 import LoggedIn from "./pages/LoggedIn/LoggedIn";
 import { PlaylistModal } from "./components/PlaylistModal/PlaylistModal";
 import { PlaylistVideos } from "./pages/Playlist/PlaylistVideos";
+import { useData } from "./context/Video/VideoContext";
+import { Loader } from "./components/Loader/Loader";
 
 function App() {
+  const {loader} = useData();
   const {authState} = useAuth();
   return (
     <div className="App">
       <PlaylistModal/>
       <Navbar></Navbar>
+      {/* {loader && <Loader/>} */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
