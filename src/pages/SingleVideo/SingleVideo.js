@@ -9,6 +9,7 @@ import {
 import ReactPlayer from "react-player/lazy";
 import { useNavigate, useParams } from "react-router-dom";
 import Aside from "../../components/Aside/Aside";
+import { Tablist } from "../../components/Tablist/Tablist";
 import { useData } from "../../context/Video/VideoContext";
 import { likedHandler } from "../../utils/LikedUtils";
 import { watchLaterHandler } from "../../utils/watchLaterUtils";
@@ -25,13 +26,13 @@ export const SingleVideo = () => {
   const inLiked = video && video.inLiked;
 
   const addToPlaylist = () => {
-    if(token) {
+    if (token) {
       setModal(true);
       setModalData(video);
     } else {
       navigate("/login");
     }
-  }
+  };
   return video ? (
     <div className="content-container">
       <Aside></Aside>
@@ -55,7 +56,11 @@ export const SingleVideo = () => {
             <div className="video-options">
               <div
                 className="vid-actions"
-                onClick={() =>token ? likedHandler(dispatch, video, token) : navigate("/login")}
+                onClick={() =>
+                  token
+                    ? likedHandler(dispatch, video, token)
+                    : navigate("/login")
+                }
               >
                 {inLiked ? <MdThumbUp /> : <MdThumbUpOffAlt />}
               </div>
@@ -79,6 +84,7 @@ export const SingleVideo = () => {
           </div>
         </div>
       </div>
+      <Tablist />
     </div>
   ) : (
     <></>

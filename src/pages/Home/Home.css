@@ -1,36 +1,41 @@
 @import url("../../App.css");
 
-.main-content{
-    box-shadow: var(--normal-inset-shadow);
-    border-radius: 10px;
-    padding: 2rem;
-    min-height: 86vh;
+.main-content {
+  box-shadow: var(--normal-inset-shadow);
+  border-radius: 10px;
+  padding: 2rem;
+  min-height: 86vh;
 }
 
-.responsive-grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(18rem,1fr));
-    grid-auto-columns: auto;
-    grid-gap: 2rem;
-    width: 100%;
-    justify-items: center;
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-auto-columns: auto;
+  grid-gap: 2rem;
+  width: 100%;
+  justify-items: center;
 }
 
-.category-list{
+.category-list {
+  display: flex;
+  color: var(--text-color);
+  gap: 1.2rem;
+}
+
+.category {
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.normal-inset-shadow {
+  box-shadow: var(--normal-inset-shadow);
+}
+
+@media screen and (max-width: 768px) {
+  .content-container {
     display: flex;
-    color: var(--text-color);
-    gap: 1.2rem;
-
-}
-
-.category{
-    margin-bottom: 2rem;
-    padding:0 1rem;
-    border-radius: 20px;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.normal-inset-shadow{
-    box-shadow: var(--normal-inset-shadow);
+  }
 }

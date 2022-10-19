@@ -7,6 +7,7 @@ import DropDownMenu from "../../components/DropDown/DropDownMenu/DropDownMenu";
 import DropDownItem from "../../components/DropDown/DropDownItem/DropDownItem";
 import { removePlaylist } from "../../services/playlistService/playlistService";
 import { MdDelete } from "react-icons/md";
+import { Tablist } from "../../components/Tablist/Tablist";
 
 export const Playlist = () => {
   const { dispatch, playlist } = useData();
@@ -37,7 +38,11 @@ export const Playlist = () => {
                 return (
                   <PlaylistFolder key={_id} listFolder={listFolder}>
                     <DropDownMenu>
-                      <DropDownItem icon={<MdDelete />} danger={"danger"} onClick={() => removePlaylist(dispatch, _id, token)}>
+                      <DropDownItem
+                        icon={<MdDelete />}
+                        danger={"danger"}
+                        onClick={() => removePlaylist(dispatch, _id, token)}
+                      >
                         Delete Playlist
                       </DropDownItem>
                     </DropDownMenu>
@@ -59,6 +64,7 @@ export const Playlist = () => {
           </div>
         )}
       </main>
+      <Tablist />
     </div>
   );
 };

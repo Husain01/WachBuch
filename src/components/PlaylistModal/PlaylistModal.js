@@ -7,7 +7,7 @@ import {
   removeVideoFromPlaylist,
 } from "../../services/playlistService/playlistService";
 import "./PlaylistModal.css";
-import {MiniLoader, miniLoader} from '../Loader/MiniLoader'
+import {MiniLoader} from '../Loader/MiniLoader'
 
 
 export const PlaylistModal = () => {

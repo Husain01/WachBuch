@@ -39,7 +39,7 @@
 
 .card-menu{
     position: relative;
-    z-index: 10;
+    z-index: 1;
 }
 
 .menu-list{

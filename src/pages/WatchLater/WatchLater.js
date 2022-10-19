@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Aside from "../../components/Aside/Aside";
 import DropDownItem from "../../components/DropDown/DropDownItem/DropDownItem";
 import DropDownMenu from "../../components/DropDown/DropDownMenu/DropDownMenu";
+import { Tablist } from "../../components/Tablist/Tablist";
 import VideoCard from "../../components/VideoCard/VideoCard";
 import { useData } from "../../context/Video/VideoContext";
 import { removeFromWatchLater } from "../../services/watchLaterService/watchLaterService";
@@ -21,11 +22,11 @@ export const WatchLater = () => {
       <main className="main-content">
         <div className="title-container">
           <h3>Watch Later</h3>
-          {isWatchLaterFull && (<>
+          {isWatchLaterFull && (
+            <>
               <p>({watchLater.length} videos)</p>
-            <div className="title-container-sub">
-            </div>
-          </>
+              <div className="title-container-sub"></div>
+            </>
           )}
         </div>
         {isWatchLaterFull ? (
@@ -55,7 +56,10 @@ export const WatchLater = () => {
                       >
                         Remove from Watch Later
                       </DropDownItem>
-                      <DropDownItem icon={<MdPlaylistAdd />} onClick={()=> addToPlaylist()}>
+                      <DropDownItem
+                        icon={<MdPlaylistAdd />}
+                        onClick={() => addToPlaylist()}
+                      >
                         Add to Playlist
                       </DropDownItem>
                     </DropDownMenu>
@@ -77,6 +81,7 @@ export const WatchLater = () => {
           </div>
         )}
       </main>
+      <Tablist />
     </div>
   );
 };
