@@ -6,6 +6,8 @@
   padding: 2rem;
   background-color: var(--bg-color);
   z-index: 2;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .logo {
@@ -22,7 +24,7 @@
 }
 
 .nav-links {
-  width: 7rem;
+  width: fit-content;
 }
 
 .btn {
@@ -33,12 +35,44 @@
   transform: translate(-22%, 3%);
 }
 
+.fa-search{
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1rem;
+}
+
 .search .fas {
   color: var(--text-color);
 }
 
 .search-input {
   width: clamp(15rem, 26vw, 31rem);
-  height: 2.3rem;
+  height: 3rem;
   color: var(--text-color);
+  padding-left: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .search {
+    transform: none;
+    width: 100%;
+    order: 3;
+    display: block;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .nav-links {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar{
+    padding: 1.5rem;
+  }
 }

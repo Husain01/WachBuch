@@ -12,6 +12,7 @@ import VideoCard from "../../components/VideoCard/VideoCard";
 import DropDownMenu from "../../components/DropDown/DropDownMenu/DropDownMenu";
 import DropDownItem from "../../components/DropDown/DropDownItem/DropDownItem";
 import { watchLaterHandler } from "../../utils/watchLaterUtils";
+import { Tablist } from "../../components/Tablist/Tablist";
 
 export const History = () => {
   const { dispatch, videos, setModal, setModalData } = useData();
@@ -71,7 +72,10 @@ export const History = () => {
                           ? "Remove from Watch Later"
                           : "Add to Watch Later"}
                       </DropDownItem>
-                      <DropDownItem icon={<MdPlaylistAdd />} onClick={() => addToPlaylist()} >
+                      <DropDownItem
+                        icon={<MdPlaylistAdd />}
+                        onClick={() => addToPlaylist()}
+                      >
                         Add to Playlist
                       </DropDownItem>
                       <DropDownItem
@@ -102,6 +106,7 @@ export const History = () => {
           </div>
         )}
       </main>
+      <Tablist />
     </div>
   );
 };

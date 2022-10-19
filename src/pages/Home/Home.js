@@ -13,23 +13,32 @@ import {
 import { watchLaterHandler } from "../../utils/watchLaterUtils";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
-
+import { Tablist } from "../../components/Tablist/Tablist";
 
 export const Home = () => {
-  const { category, videos, dispatch, sortBy, search, setModal, setModalData, loader, setLoader } =
-    useData();
+  const {
+    category,
+    videos,
+    dispatch,
+    sortBy,
+    search,
+    setModal,
+    setModalData,
+    loader,
+    setLoader,
+  } = useData();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   const sortHandler = (catName) => {
-    setLoader(true)
+    setLoader(true);
     setTimeout(() => {
       dispatch({
         type: "SORTBY",
         payload: catName,
       });
-      setLoader(false)
-    }, 500)
+      setLoader(false);
+    }, 500);
   };
 
   const sortVideos = (videos, sortBy) => {
@@ -55,57 +64,61 @@ export const Home = () => {
     <div className="content-container">
       <Aside></Aside>
       <main className="main-content">
-        {loader ? <Loader/>: <>
-        <div className="category-list">
-          {category.map(({ _id, categoryName, isActive }) => (
-            <div
-              className={`category ${
-                isActive ? "normal-inset-shadow" : "normal-shadow"
-              }`}
-              key={_id}
-              onClick={() => sortHandler(categoryName)}
-            >
-              {categoryName}
+        {loader ? (
+          <Loader />
+        ) : (
+          <>
+            <div className="category-list">
+              {category.map(({ _id, categoryName, isActive }) => (
+                <div
+                  className={`category ${
+                    isActive ? "normal-inset-shadow" : "normal-shadow"
+                  }`}
+                  key={_id}
+                  onClick={() => sortHandler(categoryName)}
+                >
+                  {categoryName}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="responsive-grid">
-          {sortByCategory.map((video) => {
-            const { _id, inWatchLater } = video;
-            const addToPlaylist = () => {
-              if (token) {
-                setModal(true);
-                setModalData(video);
-              } else {
-                navigate("/login");
-              }
-            };
-            return (
-              <VideoCard key={_id} video={video}>
-                <DropDownMenu>
-                  <DropDownItems
-                    icon={<MdOutlineWatchLater />}
-                    danger={inWatchLater ? "danger" : ""}
-                    onClick={() => addToWatchLater(dispatch, video, token)}
-                  >
-                    {inWatchLater
-                      ? "Remove from Watch Later"
-                      : "Add to Watch Later"}
-                  </DropDownItems>
-                  <DropDownItems
-                    icon={<MdPlaylistAdd />}
-                    onClick={() => addToPlaylist()}
-                  >
-                    Add to Playlist
-                  </DropDownItems>
-                </DropDownMenu>
-              </VideoCard>
-            );
-          })}
-        </div>
-        </>
-        }
+            <div className="responsive-grid">
+              {sortByCategory.map((video) => {
+                const { _id, inWatchLater } = video;
+                const addToPlaylist = () => {
+                  if (token) {
+                    setModal(true);
+                    setModalData(video);
+                  } else {
+                    navigate("/login");
+                  }
+                };
+                return (
+                  <VideoCard key={_id} video={video}>
+                    <DropDownMenu>
+                      <DropDownItems
+                        icon={<MdOutlineWatchLater />}
+                        danger={inWatchLater ? "danger" : ""}
+                        onClick={() => addToWatchLater(dispatch, video, token)}
+                      >
+                        {inWatchLater
+                          ? "Remove from Watch Later"
+                          : "Add to Watch Later"}
+                      </DropDownItems>
+                      <DropDownItems
+                        icon={<MdPlaylistAdd />}
+                        onClick={() => addToPlaylist()}
+                      >
+                        Add to Playlist
+                      </DropDownItems>
+                    </DropDownMenu>
+                  </VideoCard>
+                );
+              })}
+            </div>
+          </>
+        )}
       </main>
+      <Tablist />
     </div>
   );
 };

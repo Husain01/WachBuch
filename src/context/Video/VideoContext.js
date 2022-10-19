@@ -17,6 +17,7 @@ const DataProvider = ({children}) => {
     const [modal, setModal] = useState(false);
     const [modalData, setModalData] = useState({});
     const [loader, setLoader] = useState(false)
+    const [drawer, setDrawer] = useState(false)
 
     useEffect(() => {
         (async () => {
@@ -59,7 +60,9 @@ const DataProvider = ({children}) => {
             modalData,
             setModalData,
             loader,
-            setLoader
+            setLoader,
+            drawer,
+            setDrawer
         }}>
             {children}
         </DataContext.Provider>

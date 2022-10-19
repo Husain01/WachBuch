@@ -46,6 +46,10 @@
     line-height: 1.2rem;
 }
 
+.modal-input{
+    flex-wrap: wrap;
+}
+
 .select-input{
     display: flex;
     align-items: center;
@@ -69,6 +73,8 @@
     height: fit-content;
     padding: 0 .5rem;
     margin-left: .5rem;
+    flex-grow: 1;
+    width: 75%;
 }
 
 .dismiss{
